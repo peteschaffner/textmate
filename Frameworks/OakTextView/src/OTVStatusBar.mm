@@ -74,7 +74,7 @@ static NSButton* OakCreateImageToggleButton (NSImage* image, NSString* accessibi
 		}];
 
 		self.wantsLayer   = YES;
-		self.material     = NSVisualEffectMaterialTitlebar;
+		self.material     = NSVisualEffectMaterialHeaderView;
 		self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
 		self.state        = NSVisualEffectStateFollowsWindowActiveState;
 
