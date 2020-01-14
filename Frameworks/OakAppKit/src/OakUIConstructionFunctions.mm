@@ -84,7 +84,7 @@ NSPopUpButton* OakCreateActionPopUpButton (BOOL bordered)
 	NSMenuItem* item = [NSMenuItem new];
 	item.title = @"";
 	item.image = [NSImage imageNamed:NSImageNameActionTemplate];
-	[item.image setSize:NSMakeSize(14, 14)];
+	[item.image setSize:NSMakeSize(12, 12)];
 
 	[[res cell] setUsesItemFromMenu:NO];
 	[[res cell] setMenuItem:item];
