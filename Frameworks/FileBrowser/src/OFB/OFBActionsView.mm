@@ -66,8 +66,18 @@ static NSButton* OakCreateImageButton (NSImage* image)
 
 		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[create]-[divider]-[actions(==31)]-(>=8)-[reload]-8-[search]-8-[favorites]-8-[scm]-(9)-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]];
 		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[divider(==reload)]|"                                                                               options:0 metrics:nil views:views]];
+
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidChangeKeyStatus:) name:NSWindowDidResignKeyNotification object:self.window];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidChangeKeyStatus:) name:NSWindowDidBecomeKeyNotification object:self.window];
 	}
 	return self;
+}
+
+- (void)windowDidChangeKeyStatus:(NSNotification *)aNotification {
+	BOOL isActive = self.window.isKeyWindow;
+	for(NSView* view in self.subviews) {
+		 view.alphaValue = isActive ? 1.0 : 0.5;
+	}
 }
 
 - (NSSize)intrinsicContentSize

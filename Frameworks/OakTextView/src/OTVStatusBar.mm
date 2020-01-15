@@ -156,8 +156,18 @@ static NSButton* OakCreateImageToggleButton (NSImage* image, NSString* accessibi
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(grammarPopUpButtonWillPopUp:) name:NSPopUpButtonWillPopUpNotification object:self.grammarPopUp];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bundleItemsPopUpButtonWillPopUp:) name:NSPopUpButtonWillPopUpNotification object:self.bundleItemsPopUp];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(symbolPopUpButtonWillPopUp:) name:NSPopUpButtonWillPopUpNotification object:self.symbolPopUp];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidChangeKeyStatus:) name:NSWindowDidResignKeyNotification object:self.window];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidChangeKeyStatus:) name:NSWindowDidBecomeKeyNotification object:self.window];
 	}
 	return self;
+}
+
+- (void)windowDidChangeKeyStatus:(NSNotification *)aNotification {
+	BOOL isActive = self.window.isKeyWindow;
+	for (NSView* view in self.subviews) {
+		if ([view isEqual:self.macroRecordingButton]) continue;
+		view.alphaValue = isActive ? 1.0 : 0.5;
+	}
 }
 
 - (void)setupTabSizeMenu:(id)sender
