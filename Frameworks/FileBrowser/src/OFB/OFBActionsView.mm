@@ -10,6 +10,7 @@ static NSButton* OakCreateImageButton (NSImage* image)
 	[res setBordered:NO];
 	[res setImage:image];
 	[res setImagePosition:NSImageOnly];
+	[res setContentTintColor: [NSColor secondaryLabelColor]];
 	return res;
 }
 
@@ -19,12 +20,13 @@ static NSButton* OakCreateImageButton (NSImage* image)
 	if(self = [super initWithFrame:aRect])
 	{
 		self.wantsLayer   = YES;
-		self.material     = NSVisualEffectMaterialHeaderView;
+		self.material     = NSVisualEffectMaterialWindowBackground;
 		self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
 		self.state        = NSVisualEffectStateFollowsWindowActiveState;
 
 		self.createButton       = OakCreateImageButton([NSImage imageNamed:NSImageNameAddTemplate]);
 		self.actionsPopUpButton = OakCreateActionPopUpButton();
+		[self.actionsPopUpButton setContentTintColor: [NSColor secondaryLabelColor]];
 		self.reloadButton       = OakCreateImageButton([NSImage imageNamed:NSImageNameRefreshTemplate]);
 		self.searchButton       = OakCreateImageButton([NSImage imageNamed:@"SearchTemplate" inSameBundleAsClass:[self class]]);
 		self.favoritesButton    = OakCreateImageButton([NSImage imageNamed:@"FavoritesTemplate" inSameBundleAsClass:[self class]]);
