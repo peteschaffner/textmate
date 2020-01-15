@@ -9,6 +9,7 @@ static NSButton* OakCreateImageButton (NSString* imageName)
 	[res setBordered:NO];
 	[res setImage:[NSImage imageNamed:imageName]];
 	[res setImagePosition:NSImageOnly];
+	[res setContentTintColor: [NSColor secondaryLabelColor]];
 	return res;
 }
 
@@ -19,6 +20,7 @@ static NSPopUpButton* OakCreateFolderPopUpButton ()
 	[res setContentHuggingPriority:NSLayoutPriorityFittingSizeCompression forOrientation:NSLayoutConstraintOrientationHorizontal];
 	[res setContentHuggingPriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationVertical];
 	[res setBordered:NO];
+	[res setContentTintColor: [NSColor secondaryLabelColor]];
 	return res;
 }
 
@@ -31,8 +33,10 @@ static NSPopUpButton* OakCreateFolderPopUpButton ()
 {
 	if(self = [super initWithFrame:aRect])
 	{
-		self.style = OakBackgroundFillViewStyleHeader;
-
+		self.material = NSVisualEffectMaterialWindowBackground;
+		self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
+		self.state        = NSVisualEffectStateFollowsWindowActiveState;
+		
 		self.folderPopUpButton       = OakCreateFolderPopUpButton();
 		self.goBackButton            = OakCreateImageButton(NSImageNameGoLeftTemplate);
 		self.goBackButton.toolTip    = @"Go Back";
