@@ -75,9 +75,6 @@ static NSButton* OakCreateImageToggleButton (NSImage* image, NSString* accessibi
 		}];
 
 		self.wantsLayer   = YES;
-		self.material     = NSVisualEffectMaterialWindowBackground;
-		self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
-		self.state        = NSVisualEffectStateFollowsWindowActiveState;
 
 		self.selectionField               = OakCreateTextField(@"1:1");
 		self.grammarPopUp                 = OakCreateStatusBarPopUpButton(@"", @"Grammar");
@@ -161,6 +158,8 @@ static NSButton* OakCreateImageToggleButton (NSImage* image, NSString* accessibi
 	}
 	return self;
 }
+
+- (BOOL)isOpaque { return NO; }
 
 - (void)windowDidChangeKeyStatus:(NSNotification *)aNotification {
 	BOOL isActive = self.window.isKeyWindow;

@@ -391,6 +391,8 @@ static NSString* const kFoldingsColumnIdentifier  = @"foldings";
 		gutterDividerView.activeBackgroundColor = [NSColor colorWithCGColor:styles.divider];
 
 		[gutterView setNeedsDisplay:YES];
+		
+		_statusBar.layer.backgroundColor = [gutterView.backgroundColor CGColor];
 	}
 }
 
