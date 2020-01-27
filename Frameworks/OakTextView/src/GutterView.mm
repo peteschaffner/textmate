@@ -180,7 +180,7 @@ struct data_source_t
 
 - (BOOL)isOpaque
 {
-	return YES;
+	return NO;
 }
 
 - (BOOL)visibilityForColumnWithIdentifier:(NSString*)identifier

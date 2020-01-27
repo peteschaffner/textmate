@@ -64,6 +64,7 @@ static NSString* const kFoldingsColumnIdentifier  = @"foldings";
 		_textView.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
 
 		textScrollView = [[NSScrollView alloc] initWithFrame:NSZeroRect];
+		textScrollView.drawsBackground          = NO;
 		textScrollView.hasVerticalScroller      = YES;
 		textScrollView.verticalScrollElasticity = NSScrollElasticityAllowed;
 		textScrollView.hasHorizontalScroller    = YES;
@@ -84,6 +85,7 @@ static NSString* const kFoldingsColumnIdentifier  = @"foldings";
 		gutterScrollView.accessibilityElement = NO;
 		gutterScrollView.borderType   = NSNoBorder;
 		gutterScrollView.documentView = gutterView;
+		gutterScrollView.drawsBackground = NO;
 
 		[gutterScrollView.contentView addConstraint:[NSLayoutConstraint constraintWithItem:gutterView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:gutterScrollView.contentView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0]];
 		[gutterScrollView.contentView addConstraint:[NSLayoutConstraint constraintWithItem:gutterView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:gutterScrollView.contentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
@@ -334,12 +336,23 @@ static NSString* const kFoldingsColumnIdentifier  = @"foldings";
 		[oldDocument close];
 }
 
+- (BOOL)isOpaque { return NO; }
+
+- (void)drawRect:(NSRect)aRect {
+	if(theme_ptr theme = _textView.theme) {
+		NSColor* backgroundColor = theme->is_dark() ? [NSColor colorWithWhite:0.0 alpha:0.4] : [NSColor whiteColor];
+		[backgroundColor set];
+		NSRectFill(aRect);	
+	}
+	
+	[super drawRect:aRect];
+}
+
 - (void)updateStyle
 {
 	if(theme_ptr theme = _textView.theme)
 	{
 		[[self window] setOpaque:!theme->is_transparent() && !theme->gutter_styles().is_transparent()];
-		[textScrollView setBackgroundColor:[NSColor colorWithCGColor:theme->background(to_s(self.document.fileType))]];
 		[textScrollView setScrollerKnobStyle:theme->is_dark() ? NSScrollerKnobStyleLight : NSScrollerKnobStyleDark];
 
 		if(@available(macOS 10.14, *))

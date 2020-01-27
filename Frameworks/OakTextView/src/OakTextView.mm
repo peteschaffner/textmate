@@ -1156,7 +1156,7 @@ doScroll:
 
 - (BOOL)acceptsFirstResponder       { return YES; }
 - (BOOL)isFlipped                   { return YES; }
-- (BOOL)isOpaque                    { return YES; }
+- (BOOL)isOpaque                    { return NO; }
 
 - (void)redisplayFrom:(size_t)from to:(size_t)to
 {
