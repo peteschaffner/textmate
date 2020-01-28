@@ -20,19 +20,22 @@ static NSArray* default_environment ()
 static NSDictionary* default_settings ()
 {
 	return @{
-		kUserDefaultsHTMLOutputPlacementKey:     @"window",
-		kUserDefaultsFileBrowserPlacementKey:    @"right",
-		kUserDefaultsFoldersOnTopKey:            @YES,
-		kUserDefaultsShowFileExtensionsKey:      @NO,
-		kUserDefaultsEnvironmentVariablesKey:    default_environment(),
-		kUserDefaultsDisableBundleUpdatesKey:    @NO,
-		kUserDefaultsLastBundleUpdateCheckKey:   [NSDate distantPast],
-		kUserDefaultsDisableRMateServerKey:      @NO,
-		kUserDefaultsRMateServerListenKey:       kRMateServerListenLocalhost,
-		kUserDefaultsRMateServerPortKey:         @"52698",
-		kUserDefaultsLicenseOwnerKey:            NSFullUserName(),
-		kUserDefaultsLineNumbersKey:             @YES,
-		kUserDefaultsCrashReportsContactInfoKey: NSFullUserName() ?: @"Anonymous",
+		kUserDefaultsHTMLOutputPlacementKey:       @"window",
+		kUserDefaultsFileBrowserPlacementKey:      @"right",
+		kUserDefaultsFoldersOnTopKey:              @YES,
+		kUserDefaultsShowFileExtensionsKey:        @NO,
+		kUserDefaultsEnvironmentVariablesKey:      default_environment(),
+		kUserDefaultsDisableBundleUpdatesKey:      @NO,
+		kUserDefaultsLastBundleUpdateCheckKey:     [NSDate distantPast],
+		kUserDefaultsDisableRMateServerKey:        @NO,
+		kUserDefaultsRMateServerListenKey:         kRMateServerListenLocalhost,
+		kUserDefaultsRMateServerPortKey:           @"52698",
+		kUserDefaultsLicenseOwnerKey:              NSFullUserName(),
+		kUserDefaultsLineNumbersKey:               @YES,
+		kUserDefaultsCrashReportsContactInfoKey:   NSFullUserName() ?: @"Anonymous",
+		kUserDefaultsChangeThemeBasedOnAppearance: @YES,
+		kUserDefaultsUniversalTheme:               @"5684D192-F2BD-4CE0-83A9-1EA30E8603C4",
+		kUserDefaultsDarkModeTheme:                @"A6EDB8FC-2C89-40D5-9B05-4C0D6B6D391F",
 	};
 }
 
@@ -110,8 +113,11 @@ NSString* const kUserDefaultsLicenseOwnerKey            = @"licenseOwnerName";
 // = Appearance =
 // ==============
 
-NSString* const kUserDefaultsDisableAntiAliasKey        = @"disableAntiAlias";
-NSString* const kUserDefaultsLineNumbersKey             = @"lineNumbers";
+NSString* const kUserDefaultsDisableAntiAliasKey          = @"disableAntiAlias";
+NSString* const kUserDefaultsLineNumbersKey               = @"lineNumbers";
+NSString* const kUserDefaultsChangeThemeBasedOnAppearance = @"changeThemeBasedOnAppearance";
+NSString* const kUserDefaultsUniversalTheme               = @"universalThemeUUID";
+NSString* const kUserDefaultsDarkModeTheme                = @"darkModeThemeUUID";
 
 // =========
 // = Other =

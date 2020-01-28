@@ -15,6 +15,7 @@ PUBLIC extern NSString* const kUserDefaultsDisableNewDocumentAtStartupKey;
 PUBLIC extern NSString* const kUserDefaultsDisableNewDocumentAtReactivationKey;
 PUBLIC extern NSString* const kUserDefaultsShowFavoritesInsteadOfUntitledKey;
 
+
 // ============
 // = Projects =
 // ============
@@ -71,6 +72,9 @@ PUBLIC extern NSString* const kUserDefaultsLicenseOwnerKey;
 
 PUBLIC extern NSString* const kUserDefaultsDisableAntiAliasKey;
 PUBLIC extern NSString* const kUserDefaultsLineNumbersKey;
+PUBLIC extern NSString* const kUserDefaultsChangeThemeBasedOnAppearance;
+PUBLIC extern NSString* const kUserDefaultsUniversalTheme;
+PUBLIC extern NSString* const kUserDefaultsDarkModeTheme;
 
 // =========
 // = Other =
