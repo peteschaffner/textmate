@@ -929,6 +929,7 @@ static NSMutableIndexSet* MutableLongestCommonSubsequence (NSArray* lhs, NSArray
 		res.openButton.target = self;
 		res.openButton.action = @selector(takeItemToOpenFrom:);
 		res.textField.delegate = self;
+		res.textField.allowsExpansionToolTips = YES;
 	}
 	return res;
 }
