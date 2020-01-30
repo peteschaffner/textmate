@@ -707,8 +707,15 @@ static void* kOakTabViewSelectedContext  = &kOakTabViewSelectedContext;
 		[self addSubview:self.createNewTabButton positioned:NSWindowAbove relativeTo:nil];
 
 		[self registerForDraggedTypes:@[ OakTabItemPasteboardType ]];
+
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidChangeKeyStatus:) name:NSWindowDidResignKeyNotification object:self.window];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidChangeKeyStatus:) name:NSWindowDidBecomeKeyNotification object:self.window];
 	}
 	return self;
+}
+
+- (void)windowDidChangeKeyStatus:(NSNotification *)aNotification {
+	self.createNewTabButton.alphaValue = self.window.isKeyWindow ? 1.0 : 0.5;
 }
 
 - (NSSize)intrinsicContentSize
@@ -733,6 +740,7 @@ static void* kOakTabViewSelectedContext  = &kOakTabViewSelectedContext;
 		_createNewTabButton.toolTip    = @"Create new tab";
 		_createNewTabButton.action     = @selector(newTab:);
 		_createNewTabButton.target     = self;
+		[_createNewTabButton setContentTintColor: [NSColor colorWithWhite:0 alpha:0.4]];
 	}
 	return _createNewTabButton;
 }
