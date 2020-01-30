@@ -62,6 +62,23 @@ static NSMutableIndexSet* MutableLongestCommonSubsequence (NSArray* lhs, NSArray
 	return res;
 }
 
+@interface FileBrowserRowView : NSTableRowView
+@end
+
+@implementation FileBrowserRowView
+- (void)drawSelectionInRect:(NSRect)dirtyRect
+{
+	if(self.isEmphasized)
+	{
+		[[NSColor selectedContentBackgroundColor] setFill];
+	} else {
+		NSAppearance.currentAppearance.name == NSAppearanceNameAqua ? [[NSColor unemphasizedSelectedContentBackgroundColor] setFill] : [[NSColor colorWithWhite:1.0 alpha:0.1] setFill];
+	}
+
+	NSRectFill(dirtyRect);
+}
+@end
+
 @interface FileBrowserView () <NSAccessibilityGroup, NSOutlineViewDataSource, NSOutlineViewDelegate, NSTextFieldDelegate, QLPreviewPanelDataSource>
 {
 	NSUndoManager* _fileBrowserUndoManager;
@@ -170,6 +187,11 @@ static NSMutableIndexSet* MutableLongestCommonSubsequence (NSArray* lhs, NSArray
 		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(userDefaultsDidChange:) name:NSUserDefaultsDidChangeNotification object:NSUserDefaults.standardUserDefaults];
 	}
 	return self;
+}
+
+- (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item
+{
+	return [[FileBrowserRowView alloc] init];
 }
 
 - (void)dealloc
