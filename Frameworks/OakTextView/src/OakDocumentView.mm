@@ -59,6 +59,7 @@ static NSString* const kFoldingsColumnIdentifier  = @"foldings";
 	{
 		self.accessibilityRole  = NSAccessibilityGroupRole;
 		self.accessibilityLabel = @"Editor";
+		self.material = NSVisualEffectMaterialContentBackground;
 
 		_textView = [[OakTextView alloc] initWithFrame:NSZeroRect];
 		_textView.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
@@ -336,18 +337,6 @@ static NSString* const kFoldingsColumnIdentifier  = @"foldings";
 		[oldDocument close];
 }
 
-- (BOOL)isOpaque { return NO; }
-
-- (void)drawRect:(NSRect)aRect {
-	if(theme_ptr theme = _textView.theme) {
-		NSColor* backgroundColor = theme->is_dark() ? [NSColor colorWithWhite:0.0 alpha:0.4] : [NSColor whiteColor];
-		[backgroundColor set];
-		NSRectFill(aRect);	
-	}
-	
-	[super drawRect:aRect];
-}
-
 - (void)updateStyle
 {
 	if(theme_ptr theme = _textView.theme)
@@ -413,6 +402,7 @@ static NSString* const kFoldingsColumnIdentifier  = @"foldings";
 
 - (void)viewDidChangeEffectiveAppearance
 {
+	[super viewDidChangeEffectiveAppearance];
 	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 	if([defaults boolForKey:@"changeThemeBasedOnAppearance"])
 	{
