@@ -421,6 +421,7 @@ static void* kOakTabViewSelectedContext  = &kOakTabViewSelectedContext;
 		_closeButton.action                             = @selector(didClickCloseButton:);
 		_closeButton.target                             = self;
 		_closeButton.disableWindowOrderingForFirstMouse = YES;
+		[_closeButton setContentTintColor: [NSColor colorWithWhite:0 alpha:0.4]];
 
 		[self updateCloseButtonImage];
 	}
