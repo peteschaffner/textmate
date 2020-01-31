@@ -421,7 +421,7 @@ static void* kOakTabViewSelectedContext  = &kOakTabViewSelectedContext;
 		_closeButton.action                             = @selector(didClickCloseButton:);
 		_closeButton.target                             = self;
 		_closeButton.disableWindowOrderingForFirstMouse = YES;
-		[_closeButton setContentTintColor: [NSColor colorWithWhite:0 alpha:0.4]];
+		[_closeButton setContentTintColor: [NSColor tertiaryLabelColor]];
 
 		[self updateCloseButtonImage];
 	}
@@ -741,7 +741,7 @@ static void* kOakTabViewSelectedContext  = &kOakTabViewSelectedContext;
 		_createNewTabButton.toolTip    = @"Create new tab";
 		_createNewTabButton.action     = @selector(newTab:);
 		_createNewTabButton.target     = self;
-		[_createNewTabButton setContentTintColor: [NSColor colorWithWhite:0 alpha:0.4]];
+		[_createNewTabButton setContentTintColor: [NSColor tertiaryLabelColor]];
 	}
 	return _createNewTabButton;
 }
