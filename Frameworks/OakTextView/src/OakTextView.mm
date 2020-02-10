@@ -2141,14 +2141,6 @@ static void update_menu_key_equivalents (NSMenu* menu, std::multimap<std::string
 	D(DBF_OakTextView_TextInput, bug("%s\n", [[anEvent description] UTF8String]););
 	std::string const eventString = to_s(anEvent);
 
-	std::vector<bundles::item_ptr> const& items = bundles::query(bundles::kFieldKeyEquivalent, eventString, [self scopeContext]);
-	if(!items.empty())
-	{
-		if(bundles::item_ptr item = [self showMenuForBundleItems:items])
-			[self performBundleItem:item];
-		return YES;
-	}
-
 	static std::string const kBackwardDelete = "\x7F";
 	static std::string const kForwardDelete  = "\uF728";
 	static std::string const kUpArrow        = "\uF700";
@@ -2171,6 +2163,20 @@ static void update_menu_key_equivalents (NSMenu* menu, std::multimap<std::string
 		plist::dictionary_t::const_iterator pair = KeyBindings.find(eventString);
 		if(pair != KeyBindings.end())
 			return [self handleKeyBindingAction:pair->second], YES;
+	}
+
+	for(auto const& pair : plist::load(oak::application_t::support("KeyBindings.dict")))
+	{
+		if(ns::normalize_event_string(pair.first) == eventString)
+			return [self handleKeyBindingAction:pair.second], YES;
+	}
+
+	std::vector<bundles::item_ptr> const& items = bundles::query(bundles::kFieldKeyEquivalent, eventString, [self scopeContext]);
+	if(!items.empty())
+	{
+		if(bundles::item_ptr item = [self showMenuForBundleItems:items])
+			[self performBundleItem:item];
+		return YES;
 	}
 
 	return NO;
