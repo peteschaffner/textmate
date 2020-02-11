@@ -495,7 +495,7 @@ theme_t::decomposed_style_t& theme_t::decomposed_style_t::operator+= (theme_t::d
 	font_size  = rhs.font_size > 0            ? rhs.font_size : font_size * fabs(rhs.font_size);
 
 	foreground = rhs.foreground.is_blank()    ? foreground : rhs.foreground;
-	background = rhs.background.is_blank()    ? background : blend(background, rhs.background);
+	background = rhs.background.is_blank()    ? background : rhs.background;
 	caret      = rhs.caret.is_blank()         ? caret      : rhs.caret;
 	selection  = rhs.selection.is_blank()     ? selection  : rhs.selection;
 	invisibles = rhs.invisibles.is_blank()    ? invisibles : rhs.invisibles;
