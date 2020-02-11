@@ -193,8 +193,10 @@
 			<string>invalid</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string>strikethrough</string>
+				<key>background</key>
+				<string>#FC6A5D</string>
+				<key>foreground</key>
+				<string>#FFFFFF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -212,6 +214,86 @@
 			<dict>
 				<key>background</key>
 				<string>#371D28</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff Changed</string>
+			<key>scope</key>
+			<string>markup.changed</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#FFFFFF00</string>
+				<key>foreground</key>
+				<string>#FD8F3F</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff Inserted</string>
+			<key>scope</key>
+			<string>markup.inserted</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#FFFFFF00</string>
+				<key>foreground</key>
+				<string>#67B7A4</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff Deleted</string>
+			<key>scope</key>
+			<string>markup.deleted</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#FFFFFF00</string>
+				<key>foreground</key>
+				<string>#FC6A5D</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff Header</string>
+			<key>scope</key>
+			<string>meta.diff.header</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#FFFFFF00</string>
+				<key>foreground</key>
+				<string>#FFFFFF50</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff Index</string>
+			<key>scope</key>
+			<string>meta.diff.index</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#FFFFFF00</string>
+				<key>foreground</key>
+				<string>#FFFFFF50</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff Range</string>
+			<key>scope</key>
+			<string>meta.diff.range</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#FFFFFF00</string>
+				<key>foreground</key>
+				<string>#5482FF</string>
 			</dict>
 		</dict>
 	</array>
