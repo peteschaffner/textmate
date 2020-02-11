@@ -193,8 +193,8 @@
 			<string>invalid</string>
 			<key>settings</key>
 			<dict>
-				<key>background</key>
-				<string>#5F0047</string>
+				<key>fontStyle</key>
+				<string>strikethrough</string>
 			</dict>
 		</dict>
 		<dict>

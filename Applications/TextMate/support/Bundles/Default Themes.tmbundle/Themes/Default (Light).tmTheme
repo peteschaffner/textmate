@@ -18,7 +18,7 @@
 	<key>name</key>
 	<string>Default (Light)</string>
 	<key>semanticClass</key>
-	<string>theme.dark.default</string>
+	<string>theme.light.default</string>
 	<key>settings</key>
 	<array>
 		<dict>
@@ -193,8 +193,8 @@
 			<string>invalid</string>
 			<key>settings</key>
 			<dict>
-				<key>background</key>
-				<string>#5F0047</string>
+				<key>fontStyle</key>
+				<string>strikethrough</string>
 			</dict>
 		</dict>
 		<dict>
